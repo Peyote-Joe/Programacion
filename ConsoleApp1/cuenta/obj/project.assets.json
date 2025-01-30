@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kali/Desktop/ConsoleApp1/cuenta/cuenta.csproj",
+      "projectUniqueName": "/home/kali/Desktop/Programacion/ConsoleApp1/cuenta/cuenta.csproj",
       "projectName": "cuenta",
-      "projectPath": "/home/kali/Desktop/ConsoleApp1/cuenta/cuenta.csproj",
+      "projectPath": "/home/kali/Desktop/Programacion/ConsoleApp1/cuenta/cuenta.csproj",
       "packagesPath": "/home/kali/.nuget/packages/",
-      "outputPath": "/home/kali/Desktop/ConsoleApp1/cuenta/obj/",
+      "outputPath": "/home/kali/Desktop/Programacion/ConsoleApp1/cuenta/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kali/.nuget/NuGet/NuGet.Config"

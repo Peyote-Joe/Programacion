@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 public class NumeroCuenta
 {
     private string entidad;
@@ -6,36 +8,79 @@ public class NumeroCuenta
     private string dcNumero;
     private string cuenta;
 
-    public NumeroCuenta(in string numero){
-   
+    public NumeroCuenta(in string numero)
+    {
+        entidad = dcEntSuc = dcNumero = cuenta = sucursal = "";
 
+        if (!formatoCorrecto(numero))
+        {
+            throw new NumeroCuentaIncorrectoException("Numero cuenta incorrecto");
 
+        }
+        if (!DcCorrecto(dcEntSuc, entidad + sucursal, [4, 8, 5, 10, 9, 7, 3, 6]))
+        {
+            throw new NumeroCuentaIncorrectoException("Numero de control de entidad y sucursal incorrecto");
+        }
+
+        if (!DcCorrecto(dcNumero, cuenta, [1, 2, 4, 8, 5, 10, 9, 7, 3, 6]))
+        {
+            throw new NumeroCuentaIncorrectoException("Numero de control de numero de cuenta incorrecto");
+        }
     }
-    private bool formatoCorrecto(in string numero){
-             string entidadAux;
-    string sucursalAux;
-    string dcEntSucAux;
-    string dcNumeroAux;
-    string cuentaAux;
-    //Numero = 1111 2222 33 4444444444
-    entidadAux = numero.Substring(0,4);
-    sucursalAux = numero.Substring(4,4);
-    dcEntSucAux = numero.Substring(8,1);
+    private bool formatoCorrecto(in string numero)
+    {
+        //Numero = 1111 2222 33 4444444444 
+        //20 cifras del 0 al 9
+        string patron = @"[0-9]{20}";
+        bool resultado = false;
+        if (numero.Length==20 && Regex.IsMatch(numero, patron))
+        {
+            entidad = numero.Substring(0, 4);
+            sucursal = numero.Substring(4, 4);
+            dcEntSuc = numero.Substring(8, 1);
+            dcNumero = numero.Substring(9, 1);
+            cuenta = numero.Substring(10, 10);
+            resultado = true;
+        }
     
-    cuentaAux = numero.Substring(10,10);
-
-
-
-    
-        return false;
+        return resultado;
     }
-    private bool dcCorrecto(in string dc, in string digitos, in int[] ponderaciones){
-    
-        return false;
-    }
-    public string ToString(){
-        return "";
-    }    
+    private bool DcCorrecto(in string dc, in string digitos, in int[] ponderaciones)
+    {
 
-    
+        bool resultado = false;
+        int valor = 0;
+        for (int i = 0; i < digitos.Length; i++)
+        {
+            valor += ponderaciones[i] * (int)char.GetNumericValue(digitos[i]);
+        }
+
+        valor = (11 - (valor % 11));//valor = numero entre 0 y 11
+        if (valor == 10) valor = 1;
+        if (valor == 11) valor = 0;
+
+        if (valor == (int)char.GetNumericValue(dc[0]))
+        {
+            resultado = true;
+        }
+
+
+        /*if (digitos.Length == ponderaciones.Length && digitos.Length == 10)
+        {
+            if (valor == (int)char.GetNumericValue(dc[0]))
+            {
+                resultado = true;
+            }
+        }*/
+        return resultado;
+    }
+    public string ToString()
+    {
+        return  "\n\t\tEntidad: "+entidad+
+                "\n\t\tSucursal: "+sucursal+
+                "\n\t\tDigito de control: "+dcEntSuc+dcNumero+
+                "\n\t\tNumero de cuenta: "+ cuenta;
+    }
+
+
 }
