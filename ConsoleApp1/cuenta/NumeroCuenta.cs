@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-
 public class NumeroCuenta
 {
     private string entidad;
@@ -30,7 +29,7 @@ public class NumeroCuenta
     private bool formatoCorrecto(in string numero)
     {
         //Numero = 1111 2222 33 4444444444 
-        //20 cifras del 0 al 9
+        //20 cifras del 0 al 9 
         string patron = @"[0-9]{20}";
         bool resultado = false;
         if (numero.Length==20 && Regex.IsMatch(numero, patron))

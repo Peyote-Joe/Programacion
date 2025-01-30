@@ -1,6 +1,3 @@
-
-using System.Timers;
-
 class Cuenta
 {
     private string titular;
@@ -13,7 +10,7 @@ class Cuenta
     }
     public void Ingreso(in double cantidad){
         saldo+=cantidad;
-    }
+    } 
     public void Reintegro(in double cantidad){
         if(cantidad>saldo){
             throw new SaldoInsuficienteException("El reintegro es mayor que el saldo");

@@ -1,5 +1,5 @@
 ﻿public class Program
-{
+{ 
     static void Main(string[] args)
     {
         Cuenta cuenta = new Cuenta("20850103920300731702", "Franco");
