@@ -1,0 +1,14 @@
+/home/kali/Desktop/ConsoleApp1/cuenta/bin/Debug/net9.0/cuenta
+/home/kali/Desktop/ConsoleApp1/cuenta/bin/Debug/net9.0/cuenta.deps.json
+/home/kali/Desktop/ConsoleApp1/cuenta/bin/Debug/net9.0/cuenta.runtimeconfig.json
+/home/kali/Desktop/ConsoleApp1/cuenta/bin/Debug/net9.0/cuenta.dll
+/home/kali/Desktop/ConsoleApp1/cuenta/bin/Debug/net9.0/cuenta.pdb
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.GeneratedMSBuildEditorConfig.editorconfig
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.AssemblyInfoInputs.cache
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.AssemblyInfo.cs
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.csproj.CoreCompileInputs.cache
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.dll
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/refint/cuenta.dll
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.pdb
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/cuenta.genruntimeconfig.cache
+/home/kali/Desktop/ConsoleApp1/cuenta/obj/Debug/net9.0/ref/cuenta.dll
