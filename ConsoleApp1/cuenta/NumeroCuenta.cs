@@ -14,7 +14,6 @@ public class NumeroCuenta
         if (!formatoCorrecto(numero))
         {
             throw new NumeroCuentaIncorrectoException("Numero cuenta incorrecto");
-
         }
         if (!DcCorrecto(dcEntSuc, entidad + sucursal, [4, 8, 5, 10, 9, 7, 3, 6]))
         {
@@ -30,8 +29,23 @@ public class NumeroCuenta
     {
         //Numero = 1111 2222 33 4444444444 
         //20 cifras del 0 al 9 
-        string patron = @"[0-9]{20}";
         bool resultado = false;
+
+        Regex patronCuenta = new Regex(@"^(?<entidad>\d{4})[-\s]?(?<sucursal>\d{4})[-\s]?(?<dcEntSuc>\d)[-\s]?(?<dcNumero>\d)[-\s]?(?<cuenta>\d{10})");
+        Match coincidencia = patronCuenta.Match(numero);
+        
+        if(coincidencia){
+            
+            entidad = coincidencia.Groups["entidad"].Value;
+            sucursal = coincidencia.Groups["sucursal"].Value;
+            dcEntSuc = coincidencia.Groups["dcEntSuc"].Value;
+            dcNumero = coincidencia.Groups["dcNumero"].Value;
+            cuenta = coincidencia.Groups["Cuenta"].Value;
+            
+            resultado = true;
+        }
+        /*
+        string patron = @"[0-9]{20}";
         if (numero.Length==20 && Regex.IsMatch(numero, patron))
         {
             entidad = numero.Substring(0, 4);
@@ -41,6 +55,7 @@ public class NumeroCuenta
             cuenta = numero.Substring(10, 10);
             resultado = true;
         }
+        */
     
         return resultado;
     }
