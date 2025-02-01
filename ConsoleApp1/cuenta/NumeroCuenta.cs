@@ -34,7 +34,7 @@ public class NumeroCuenta
         Regex patronCuenta = new Regex(@"^(?<entidad>\d{4})[-\s]?(?<sucursal>\d{4})[-\s]?(?<dcEntSuc>\d)[-\s]?(?<dcNumero>\d)[-\s]?(?<cuenta>\d{10})");
         Match coincidencia = patronCuenta.Match(numero);
         
-        if(coincidencia){
+        if(coincidencia.Success){
             
             entidad = coincidencia.Groups["entidad"].Value;
             sucursal = coincidencia.Groups["sucursal"].Value;
@@ -75,7 +75,7 @@ public class NumeroCuenta
 
 
 
-        if (valor == (int)char.GetNumericValue(dc))
+        if (valor == (int)char.GetNumericValue(dc[0]))
         {
             resultado = true;
         }
