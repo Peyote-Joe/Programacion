@@ -73,7 +73,9 @@ public class NumeroCuenta
         if (valor == 10) valor = 1;
         if (valor == 11) valor = 0;
 
-        if (valor == (int)char.GetNumericValue(dc[0]))
+
+
+        if (valor == (int)char.GetNumericValue(dc))
         {
             resultado = true;
         }
