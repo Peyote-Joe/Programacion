@@ -19,7 +19,6 @@ public class NumeroCuenta
         {
             throw new NumeroCuentaIncorrectoException("Numero de control de entidad y sucursal incorrecto");
         }
-
         if (!DcCorrecto(dcNumero, cuenta, [1, 2, 4, 8, 5, 10, 9, 7, 3, 6]))
         {
             throw new NumeroCuentaIncorrectoException("Numero de control de numero de cuenta incorrecto");
@@ -40,23 +39,9 @@ public class NumeroCuenta
             sucursal = coincidencia.Groups["sucursal"].Value;
             dcEntSuc = coincidencia.Groups["dcEntSuc"].Value;
             dcNumero = coincidencia.Groups["dcNumero"].Value;
-            cuenta = coincidencia.Groups["Cuenta"].Value;
-            
+            cuenta = coincidencia.Groups["cuenta"].Value;
             resultado = true;
         }
-        /*
-        string patron = @"[0-9]{20}";
-        if (numero.Length==20 && Regex.IsMatch(numero, patron))
-        {
-            entidad = numero.Substring(0, 4);
-            sucursal = numero.Substring(4, 4);
-            dcEntSuc = numero.Substring(8, 1);
-            dcNumero = numero.Substring(9, 1);
-            cuenta = numero.Substring(10, 10);
-            resultado = true;
-        }
-        */
-    
         return resultado;
     }
     private bool DcCorrecto(in string dc, in string digitos, in int[] ponderaciones)
@@ -73,15 +58,16 @@ public class NumeroCuenta
         if (valor == 10) valor = 1;
         if (valor == 11) valor = 0;
 
-
-
-        if (valor == (int)char.GetNumericValue(dc[0]))
+        if (valor.ToString() == dc)
         {
             resultado = true;
         }
 
 
-        /*if (digitos.Length == ponderaciones.Length && digitos.Length == 10)
+        /* 
+        Asi es como yo lo hubiera hecho sin los grupos de expresiones regulares
+
+        if (digitos.Length == ponderaciones.Length && digitos.Length == 10)
         {
             if (valor == (int)char.GetNumericValue(dc[0]))
             {
@@ -90,7 +76,7 @@ public class NumeroCuenta
         }*/
         return resultado;
     }
-    public string ToString()
+    public override string ToString()
     {
         return  "\n\t\tEntidad: "+entidad+
                 "\n\t\tSucursal: "+sucursal+
